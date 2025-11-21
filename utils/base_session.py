@@ -13,7 +13,9 @@ class BaseSession(Session):
         url = self.base_url + url
 
         response = super().request(method, url, **kwargs)
+        
         curl = curlify.to_curl(response.request)
         logging.info(curlify.to_curl(response.request))
-        return
+        
+        return response
 
